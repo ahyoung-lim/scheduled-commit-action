@@ -51,7 +51,6 @@ jobs:
         shell: Rscript {0}
         
       - uses: browser-actions/setup-chrome@v1
-        run: chrome --version
         
       - name: Install packages
         uses: r-lib/actions/setup-r-dependencies@v2
