@@ -50,7 +50,7 @@ jobs:
           
       - name: Generate data
         run: |
-          source("R/job.R")
+          source("R/web_crawler.R")
         shell: Rscript {0} 
         
       - name: Commit files
