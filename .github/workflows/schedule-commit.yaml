@@ -32,14 +32,14 @@ jobs:
         run: |
           install.packages('remotes')
           install.packages('sessioninfo')
-          remotes::install_github("rstudio/renv")
-
+          install.packages('rvest')
+          install.packages('stringr')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
       - name: Cache R packages
-        uses: actions/cache@v4
+        uses: actions/cache@v1
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
@@ -50,10 +50,6 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
         
-      - name: Restore project dependencies
-        run: renv::restore()
-        shell: Rscript {0}
-          
       - name: Generate data
         run: |
           source("R/web_crawler.R")
