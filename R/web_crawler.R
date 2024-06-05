@@ -1,10 +1,10 @@
-# library(RSelenium)
+library(RSelenium)
 library(stringr)
-# library(readr)
+library(readr)
 library(rvest)
-# library(wdman)
-# library(binman)
-# library(netstat) # find a free port
+library(wdman)
+library(binman)
+library(netstat) # find a free port
 
 # Extract the date of data report ===========================
 url <- "https://worldhealthorg.shinyapps.io/dengue_global/"
@@ -29,45 +29,45 @@ save(row, file = paste0('data/report_date_', make.names(Sys.Date()), '.Rda'))
 
 
 # Download global data =====================================
-# eCaps <- list(
-#   chromeOptions = 
-#     list(prefs = list(
-#       "profile.default_content_settings.popups" = 0L,
-#       "download.prompt_for_download" = FALSE,
-#       "download.default_directory" = "C:/Users/AhyoungLim/Dropbox/" # downloaded file to your desired location
-#     )
-#     )
-# )
-
-# 
-# 
-# binman::list_versions('chromedriver') # make sure chrome version == chromedriver version
-# chrome(port = 4837L, version = '125.0.6422.114')
-# rs_driver_object = rsDriver(browser = 'chrome', 
-#                    chromever = '125.0.6422.114', 
-#                    # extraCapabilities = eCaps,
-#                    port = free_port() 
-#                    )
-# 
-# 
-# remDr = rs_driver_object$client
-# 
-# remDr$open()
-# remDr$navigate('https://worldhealthorg.shinyapps.io/dengue_global/')
-# # remDr$getPageSource()
-# remDr$findElement(using = "id", "closeModal")$clickElement() # find and click "I accept" button
-# remDr$findElement(using = "xpath", value = "//a[@data-value='dl_data']")$clickElement() # find and click "download data" in the menu
-# remDr$findElement(using = "id", "dl_all_data")$clickElement() # download global data
+eCaps <- list(
+  chromeOptions =
+    list(prefs = list(
+      "profile.default_content_settings.popups" = 0L,
+      "download.prompt_for_download" = FALSE,
+      "download.default_directory" = "C:/Users/AhyoungLim/Dropbox/" # downloaded file to your desired location
+    )
+    )
+)
 
 
-# # close browser
-# remDr$close()
-#  
-#  
-# # stop the selenium server
-# rd[["server"]]$stop()
-#  
-# # and delete it
-# rm(rd)
+
+binman::list_versions('chromedriver') # make sure chrome version == chromedriver version
+chrome(port = 4837L, version = '125.0.6422.114')
+rs_driver_object = rsDriver(browser = 'chrome',
+                   chromever = '125.0.6422.114',
+                   # extraCapabilities = eCaps,
+                   port = free_port()
+                   )
+
+
+remDr = rs_driver_object$client
+
+remDr$open()
+remDr$navigate('https://worldhealthorg.shinyapps.io/dengue_global/')
+# remDr$getPageSource()
+remDr$findElement(using = "id", "closeModal")$clickElement() # find and click "I accept" button
+remDr$findElement(using = "xpath", value = "//a[@data-value='dl_data']")$clickElement() # find and click "download data" in the menu
+remDr$findElement(using = "id", "dl_all_data")$clickElement() # download global data
+
+
+# close browser
+remDr$close()
+
+
+# stop the selenium server
+rd[["server"]]$stop()
+
+# and delete it
+rm(rd)
 
 
