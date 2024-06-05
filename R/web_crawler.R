@@ -25,7 +25,7 @@ report_date <- as.Date(str_extract(date_paragraph[2], date_pattern), format = "%
 row <- data.frame(Sys.time(), report_date)
 
 # append at the end of the csv the new data
-save(row, file = paste0('report_date_', make.names(Sys.Date()), '.Rda')) 
+save(row, file = paste0('data/report_date_', make.names(Sys.Date()), '.Rda')) 
 
 
 # Download global data =====================================
