@@ -1,10 +1,10 @@
-library(RSelenium)
+# library(RSelenium)
 library(stringr)
-library(readr)
+# library(readr)
 library(rvest)
-library(wdman)
-library(binman)
-library(netstat) # find a free port
+# library(wdman)
+# library(binman)
+# library(netstat) # find a free port
 
 # Extract the date of data report ===========================
 url <- "https://worldhealthorg.shinyapps.io/dengue_global/"
