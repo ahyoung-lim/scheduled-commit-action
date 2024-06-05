@@ -22,10 +22,10 @@ date_pattern <-  "(\\d{1,2})\\s[A-Za-z]+\\s\\d{4}"
 report_date <- as.Date(str_extract(date_paragraph[2], date_pattern), format = "%d %B %Y")
 
 # create a new row of data, with todayd's date and urls number
-row <- data.frame(Sys.Date(), report_date)
+row <- data.frame(Sys.time(), report_date)
 
 # append at the end of the csv the new data
-write.csv(row, paste0('data/report_date.csv'), append = T) 
+save(row, file = paste0('data/report_date_', make.names(Sys.Date()), '.Rda')) 
 
 
 # Download global data =====================================
@@ -60,14 +60,14 @@ write.csv(row, paste0('data/report_date.csv'), append = T)
 # remDr$findElement(using = "id", "dl_all_data")$clickElement() # download global data
 
 
-# close browser
-remDr$close()
- 
- 
-# stop the selenium server
-rd[["server"]]$stop()
- 
-# and delete it
-rm(rd)
+# # close browser
+# remDr$close()
+#  
+#  
+# # stop the selenium server
+# rd[["server"]]$stop()
+#  
+# # and delete it
+# rm(rd)
 
 
