@@ -58,7 +58,7 @@ jobs:
           packages: |
             any::rvest
             any::stringr
-            any::Rselenium
+            any::RSelenium
             any::wdman
             any::httr
             any::binman
